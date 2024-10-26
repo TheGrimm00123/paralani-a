@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para alguien especial (YL)</title>
+    <!-- Bootstrap CDN -->
+    <link rel="icon" type="image/png" sizes="16x16" href="imagen.jpg">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-image: linear-gradient(to top left,
+                #ffadad,
+                #ffd6a5, 
+                #fdffb6,
+                #caffbf,
+                #9bf6ff,
+                #a0c4ff,
+                #bdb2ff);
+            color: #5d5865;
+            padding: 2rem;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', serif;
+            text-align: center;
+            font-size: 4rem;
+            color: #5d5865;
+            margin-bottom: 2rem;
+        }
+
+        #list-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 1.5rem;
+            padding: 1rem;
+            justify-content: center;
+        }
+
+        .item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(45deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
+            border-radius: 2rem;
+            padding: 4rem 2rem;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .item::before,
+        .item::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            width: 5rem;
+            height: 5rem;
+        }
+
+        .item::before {
+            bottom: 1rem; left: 1rem;
+            border-radius: 0 0 0 2rem;
+            background-image: linear-gradient(225deg, transparent 50%, rgba(255, 255, 255, 0.5));
+        }
+
+        .item::after {
+            top: 1rem; right: 1rem;
+            border-radius: 0 2rem 0 0;
+            background-image: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.5));
+        }
+
+        .item:hover,
+        .item:focus,
+        .item:active {
+            background-color: rgba(255, 255, 255, 0.7);
+            outline: none;
+            transform: scale(1.05);
+        }
+
+        dt {
+            font-family: 'Great Vibes', serif;
+            font-size: 3rem;
+        }
+
+        dd {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem;
+        }
+
+        dd, dt {
+            pointer-events: none;
+        }
+
+        /* Estilo para el modal */
+        .modal-content {
+            background: linear-gradient(to bottom right, #ffcccb, #ffe4e1);
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeInZoom 0.8s ease forwards;
+        }
+
+        .modal-title {
+            font-family: 'Great Vibes', serif;
+            color: #5d5865;
+            font-size: 3rem;
+        }
+
+        .modal-body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #5d5865;
+        }
+
+        .modal-body::before {
+            content: "♥ ";
+            color: red;
+            font-size: 2rem;
+        }
+
+        .modal-body::after {
+            content: " ♥";
+            color: red;
+            font-size: 2rem;
+        }
+
+        .modal-footer {
+            justify-content: center;
+        }
+
+        .btn-close-custom {
+            background-color: #ffcccc;
+            color: #5d5865;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-close-custom:hover {
+            background-color: #ffb3b3;
+        }
+
+        @keyframes fadeInZoom {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            font-family: 'Great Vibes', serif;
+            font-size: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.6);
+            margin-top: 2rem;
+            box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+            color: #5d5865;
+        }
+
+        footer a {
+            color: #5d5865;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animaciones de corazones */
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-40px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-80px) scale(1.2);
+            }
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatUp 2s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <h1>Para la niña especial ❤️</h1><br> <h1 style="font-size:30px;">Yoselin</h1>
+    <div id="list-group" class="container-fluid">
+        <!-- Elementos generados por JavaScript -->
+    </div>
+
+    <!-- Bootstrap Modal Template -->
+    <div class="modal fade" id="dynamicModal" tabindex="-1" role="dialog" aria-labelledby="dynamicModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="dynamicModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="modal-message"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-close-custom" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>Made with ♥ by <a href="https://www.facebook.com/profile.php?id=100008922845352">Jhonny A.</a></p>
+    </footer>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        const loveTranslations = [
+    {
+        "language": "Solo para ti",
+        "word": "Dia 1",
+        "message": "Martes 22/10/24 \n Hola, niña bonita 👋\nHe estado pensando mucho últimamente,\nsobre cómo hacer que, al leer estas palabras,\nte sientas tan especial como eres.\n\nA veces, el día nos pone pruebas,\nnos llena de pensamientos que nublan el corazón,\npero quiero que este espacio sea para ti,\npara recordarte lo increíble que eres,\npara que, cada vez que lo leas, sonrías un poquito más.\n\nNo es que busque grandes gestos ni palabras complicadas,\nsolo quiero que cuando el ánimo te falle,\no cuando te sientas sola,\nrecuerdes que siempre hay alguien que te aprecia,\nque valora todo lo que eres,\ny que ve en ti algo único,\nalgo que hace que el mundo sea un lugar mejor.\n\nSin importar lo que pase o cómo te sientas,\nespero que encuentres aquí un respiro,\nun pequeño recordatorio de lo maravillosa que eres.\n\nY si alguna vez necesitas una sonrisa extra,\nsolo vuelve a estas palabras.\nAquí siempre estará este mensaje,\nesperando para hacerte sentir bien,\ntan especial como te mereces."
+    },
+        {
+        "language": "Tu hermosa sonrisa",
+        "word": "Día 2",
+        "message": "Miércoles, 23 de octubre de 2024\n\nTu hermosa sonrisa,\nesa que ocultas con tanta sutileza,\nbrilla más que el sol al despertar el día.\nEs como presenciar el amanecer,\ncuando el cielo se tiñe de colores\ny todo cobra vida desde el horizonte.\n\nEsa sonrisa tuya, tan rara,\ntan valiosa, como un secreto que solo tú conoces.\nNo se muestra siempre, no en público,\ny quizás por eso tiene el poder de detener el tiempo,\nde hacer que todo lo demás pase a segundo plano.\n\nEs tan hermosa,\nque yo daría cualquier cosa solo por verla,\npor ser testigo de ese momento\nen el que decides dejar que el mundo\nse ilumine con tu risa,\naunque solo sea por un instante.\n\nTu sonrisa es un tesoro,\ny cada vez que aparece,\ntodo lo demás se desvanece."
+    },
+
+    {
+    "language": "Tu Belleza!",
+    "word": "Día 3",
+    "message": "Jueves, 24 de octubre de 2024\n\nTu belleza,\nes como el murmullo del viento al amanecer,\nsuave y sutil, pero capaz de tocar lo más profundo del alma.\nNo es solo lo que los ojos ven,\nes una luz que brilla con una calma indescriptible,\nllenando el mundo de calidez sin esfuerzo,\nsin necesidad de anunciarse.\n\nEs un misterio,\nuna combinación perfecta entre fuerza y delicadeza,\ncomo si el universo hubiera esculpido algo único solo para ti.\nEs una belleza que no se desvanece,\nmás allá de lo que el espejo refleja,\nhabita en cada gesto, en cada pensamiento,\nen lo que irradias al estar presente.\n\nTu belleza es como una chispa constante,\nque ilumina lo ordinario,\ntransformándolo en algo especial,\nun recordatorio de que eres extraordinaria,\nsiempre, sin importar el día o el momento."
+},
+{
+    "language": "Lo admirable de ti",
+    "word": "Día 4",
+    "message": "Viernes, 25 de octubre de 2024\n\nHay algo en ti que me ha llamado la atención desde el principio:\ntu capacidad para enfrentarte a cada desafío con responsabilidad y dedicación.\nNo te conozco a profundidad, pero lo poco que he visto me basta para admirarte.\nEl hecho de que estudies varias carreras,\nque tengas la fuerza para mantener ese enfoque,\ndemuestra una inteligencia y un compromiso que no cualquiera tiene.\n\nEs admirable cómo llevas tantas cosas a la vez,\ncómo te dedicas con seriedad a lo que te propones.\nAunque quizás el mundo no lo sepa o no lo note,\nes algo que a mí no se me escapa.\nEs lo que más me impresiona de ti,\nesa determinación y esa pasión por lo que haces.\n\nNo hace falta conocerte a fondo para darme cuenta\nde lo genial que eres.\nEres alguien que enfrenta la vida con valentía,\ny eso es digno de admirar."
+},
+{
+    "language": "Solo para ti",
+    "word": "Día 5",
+    "message": "¡La despedida!\n\nDesde lo más profundo de mi corazón, hago esto sin esperar o querer algo a cambio, solamente como aquella vez dijimos, lo hacemos desde el corazón, porque quiero que te sientas bien si es que en algún momento lo necesitas, aquí estaran, las palabras de alguien “enamorado” de alguien que en el poco tiempo que nos conocimos te admira y quiere, que no solo le atrae lo bonita que eres, sino lo genial y fácil que eres de admirar, con tanta voluntad, con tantas ganas de salir adelante, con ese esfuerzo que le pones que es increíble.\n\nTodavía te pienso a diario, como aquella vez que nos vimos sin que “nadie” nos interrumpa, aquella noche especial.\n\nHas entrado rápidamente a mi corazón sin darme cuenta, sin siquiera querer la verdad, pero…\n\nAsí como fue fácil, el que me dejes de gustar va ser lo contrario, solo dame tiempo.\n\nY lo más importante quería pedirte disculpas, por la forma en la que te hablo o a veces ni te respondo, pero como actuar frente a lo que uno siente, si los sentimientos si no se expresar se tienen que ocultar hasta el día en el que desaparezcan, fingiendo como si no pasara nada, como si nada hubiera sentido y la cabeza lo que se hubiera imaginado.\n\nEntiendo tu posición y entiendo que no sientes nada y no es necesario que respondas a todo lo que digo, no lo necesito, solamente quiero que te sientas y estés bien, ps te deseo lo mejor y que te vaya bien en todo lo que vayas a hacer, en las decisiones que tomes.\n\nTe quiero, con cariño\n\n                                                                         Jhonny"
+}
+];
+
+function populateList() {
+    let output = '';
+
+    loveTranslations.forEach((love) => {
+        output += `<div class="item" tabindex="0" data-toggle="modal" data-target="#dynamicModal" data-word="${love.word}" data-language="${love.language}" data-message="${love.message}">
+            <dt>${love.word}</dt>
+            <dd>${love.language}</dd>
+        </div>`;
+    });
+
+    document.getElementById('list-group').innerHTML = output;
+}
+
+// Event listener para mostrar los modales dinámicos
+$('#dynamicModal').on('show.bs.modal', function (event) {
+    const button = $(event.relatedTarget); // Botón que activó el modal
+    const word = button.data('word'); // Extrae la información de los atributos data-*
+    const language = button.data('language');
+    const message = button.data('message');
+
+    const modal = $(this);
+    modal.find('.modal-title').text(word + ' (' + language + ')');
+    modal.find('.modal-body #modal-message').html(message.replace(/\n/g, '<br>'));
+
+    // Crear corazones flotantes
+    createHearts();
+});
+
+// Función para crear corazones flotantes
+function createHearts() {
+    const heartContainer = document.createElement('div');
+    heartContainer.style.position = 'fixed';
+    heartContainer.style.top = '50%';
+    heartContainer.style.left = '50%';
+    heartContainer.style.transform = 'translate(-50%, -50%)';
+    heartContainer.style.pointerEvents = 'none';
+
+    for (let i = 0; i < 10; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = `${Math.random() * 200 - 100}px`;
+        heart.style.animationDelay = `${Math.random() * 1.5}s`;
+        heart.innerHTML = '♥';
+        heartContainer.appendChild(heart);
+    }
+
+    document.body.appendChild(heartContainer);
+
+    // Remover corazones después de la animación
+    setTimeout(() => {
+        heartContainer.remove();
+    }, 3000);
+}
+
+// Poblar el grid con las 5 burbujas (modales)
+populateList();
+
+    </script>
+</body>
+</html>
+<script>
+// Configuración del audio para el Día 1
+const day1Audio = new Audio("musica.mp3"); // Cambia "ruta/a/tu-cancion.mp3" por la ubicación de tu archivo de audio
+
+// Event listener para mostrar los modales dinámicos
+$('#dynamicModal').on('show.bs.modal', function (event) {
+    const button = $(event.relatedTarget); // Botón que activó el modal
+    const word = button.data('word'); // Extrae la información de los atributos data-*
+    const language = button.data('language');
+    const message = button.data('message');
+
+    const modal = $(this);
+    modal.find('.modal-title').text(word + ' (' + language + ')');
+    modal.find('.modal-body #modal-message').html(message.replace(/\n/g, '<br>'));
+
+    // Verifica si el modal corresponde al "Día 1" y reproduce el audio
+    if (word === "Dia 1") {
+        if (day1Audio.paused) {
+            day1Audio.play();
+        }
+    }
+
+    // Crear corazones flotantes
+    createHearts();
+});
+
+</script>
